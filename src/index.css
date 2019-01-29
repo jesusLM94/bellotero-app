@@ -5,9 +5,13 @@
 }
 
 .header-container {
-    width: 1440px;
     height: 64px;
+    display: flex;
+    width: 1440px;
+    align-items: center;
+    padding-left: 150px;
     background-color: #ffffff;
+    justify-content: space-between;
 }
 
 .bellotero-logo {
@@ -16,15 +20,28 @@
     object-fit: contain;
 }
 
+.menu-items {
+    overflow: hidden;
+    margin-right: 300px;
+    list-style-type: none;
+}
+
 .menu-item {
     /*width: 39px;*/
+    float: left;
     height: 16px;
-    font-family: Roboto;
+    color: #071eb3;
     font-size: 14px;
     font-weight: 500;
     font-style: normal;
-    font-stretch: normal;
     line-height: normal;
+    font-family: Roboto;
+    font-stretch: normal;
     letter-spacing: 0.3px;
-    color: #071eb3;
+}
+
+.menu-item-link {
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
 }

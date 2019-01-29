@@ -45,10 +45,9 @@ class Header extends React.Component {
         return (
             <div className='header-container'>
                 <img src={belloteroLogo} className='bellotero-logo' alt='logo'/>
-                <ul>
-                    {console.log(this.state)}
+                <ul className="menu-items">
                     {this.state.pages.map((item) =>
-                        <li className='menu-item'><a href={item.route}>{item.name}</a></li>
+                        <li className='menu-item'><a className='menu-item-link' href={item.route}>{item.name}</a></li>
                     )}
                 </ul>
             </div>
