@@ -68,3 +68,56 @@
     font-stretch: normal;
     letter-spacing: 0.8px;
 }
+
+.testimonial-container {
+    width: 1002px;
+    height: 254px;
+    margin: 80px 0 0 170px;
+    background-color: #ffffff;
+}
+
+.testimonial-name {
+    color: #161616;
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: bold;
+    font-style: normal;
+    font-family: Roboto;
+    font-stretch: normal;
+    padding: 32px 0 0 32px;
+    letter-spacing: normal;
+}
+
+.testimonial-position {
+    color: #a5a5a5;
+    font-size: 14px;
+    font-style: normal;
+    padding-left: 32px;
+    line-height: normal;
+    font-weight: normal;
+    font-family: Roboto;
+    font-stretch: normal;
+    letter-spacing: normal;
+}
+
+.testimonial-review {
+    width: 565px;
+    height: 190px;
+    color: #161616;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.33;
+    font-style: normal;
+    font-family: Roboto;
+    font-stretch: normal;
+    margin: 32px 32px 0 0;
+    letter-spacing: normal;
+}
+
+.flex-grid {
+    display: flex;
+}
+
+.col {
+    flex: 1;
+}

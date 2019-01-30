@@ -4,6 +4,8 @@ import axios from 'axios'
 import belloteroLogo from './images/bellotero.svg'
 import './index.css';
 import store from './lib/store/store'
+import isEmpty from 'lodash/isEmpty'
+
 import {
     addPage,
     addSlider,
@@ -31,6 +33,7 @@ class Container extends React.Component {
             <div className='main-container'>
                 <Header/>
                 <Title/>
+                <Testimonial />
             </div>
         );
     }
@@ -81,16 +84,42 @@ class Title extends React.Component {
             <div className='title-container'>
                 {this.state.slider ?
                     <p className='title'>{this.state.slider.title}</p>
-                    : ''}
+                    : null}
             </div>
         )
     }
 }
 
 class Testimonial extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            slider: {},
+        };
+        store.subscribe(() => {
+            this.setState({
+                slider: store.getState().pages[0].slider,
+            });
+        });
+    }
+
     render() {
         return (
-            <div></div>
+            isEmpty(this.state.slider) ? null :
+                this.state.slider.reviews.map((review, index) =>
+                    <div className='testimonial-container'>
+                        <div className='flex-grid'>
+                            <div className='col'>
+                                <h3 className='testimonial-name'>{review.name}</h3>
+                                <h5 className='testimonial-position'>{review.position}</h5>
+                            </div>
+                            <div className='col'>
+                                <p className='testimonial-review'>"{review.comment}"</p>
+                            </div>
+                        </div>
+
+                    </div>
+                )
         )
     }
 }
