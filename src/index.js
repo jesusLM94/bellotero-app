@@ -6,6 +6,7 @@ import './index.css';
 import store from './lib/store/store'
 import {
     addPage,
+    addSlider,
 } from './lib/store/actions'
 
 class Container extends React.Component {
@@ -17,12 +18,19 @@ class Container extends React.Component {
                     store.dispatch(addPage(page.text, page.route));
                 })
             })
+
+        axios.get('https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page1.json')
+            .then(response => {
+                const data = response.data.slider;
+                store.dispatch(addSlider('page-1', data.title, data.reviews));
+            })
     }
 
     render() {
         return (
             <div className='main-container'>
                 <Header/>
+                <Title/>
             </div>
         );
     }
@@ -52,6 +60,38 @@ class Header extends React.Component {
                 </ul>
             </div>
         );
+    }
+}
+
+class Title extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            slider: {},
+        };
+        store.subscribe(() => {
+            this.setState({
+                slider: store.getState().pages[0].slider,
+            });
+        });
+    }
+
+    render() {
+        return (
+            <div className='title-container'>
+                {this.state.slider ?
+                    <p className='title'>{this.state.slider.title}</p>
+                    : ''}
+            </div>
+        )
+    }
+}
+
+class Testimonial extends React.Component {
+    render() {
+        return (
+            <div></div>
+        )
     }
 }
 

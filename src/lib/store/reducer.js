@@ -1,6 +1,7 @@
 import  { combineReducers } from 'redux'
 import {
     ADD_PAGE,
+    ADD_SLIDER,
 } from './actions'
 
 function pages(state = [], action) {
@@ -13,6 +14,18 @@ function pages(state = [], action) {
                     route: action.payload.route,
                 }
             ]
+        case ADD_SLIDER:
+            return state.map((page) => {
+                if (page.route === action.payload.pageId) {
+                    return Object.assign({}, page, {
+                        slider: {
+                            title: action.payload.title,
+                            reviews: action.payload.reviews,
+                        }
+                    })
+                }
+                return page;
+            });
         default:
             return state
     }
