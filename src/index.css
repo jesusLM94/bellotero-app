@@ -27,7 +27,6 @@
 }
 
 .menu-item {
-    /*width: 39px;*/
     float: left;
     height: 16px;
     color: #071eb3;
@@ -120,4 +119,22 @@
 
 .col {
     flex: 1;
+}
+
+.nav-container {
+    width: 240px;
+    height: 56px;
+    margin: -20px 0 0 1020px;
+    background-color: #071eb3;
+}
+
+.nav-content {
+    line-height: 1;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 600;
+    font-style: italic;
+    font-stretch: normal;
+    letter-spacing: 0.7px;
+    padding: 10px 0 0 30px;
 }

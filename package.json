@@ -27,6 +27,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
     "redux-devtools": "^3.5.0"
   }
 }
