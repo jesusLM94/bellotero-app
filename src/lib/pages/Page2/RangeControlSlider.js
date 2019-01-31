@@ -6,14 +6,22 @@ class RangeControlSlider extends React.Component {
         name: string.isRequired,
         min: number.isRequired,
         max: number.isRequired,
+        value: number.isRequired,
         onChange: func.isRequired,
     }
 
     render() {
-        const props = this.props
+        const {min, max, name, onChange, value}  = this.props;
+
         return <React.Fragment>
-            {props.name} <input type="range" name={props.name} min={props.min} max={props.max}
-                                onChange={event => props.onChange(event.target.value)}/>
+            {name}
+            <input
+                value={value}
+                type="range"
+                name={name}
+                min={min}
+                max={max}
+                onChange={event => onChange(event.target.value)}/>
         </React.Fragment>
 
 

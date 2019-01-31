@@ -13,11 +13,11 @@ class CalculatorResults extends React.Component {
     render() {
         return (
             <div className='flex-grid'>
-                <div class="col">
+                <div className="col">
                     <h3>$ {this.calculateFoodSavings()}</h3>
                     <p>Estimated Cost Food Saving</p>
                 </div>
-                <div class="col">
+                <div className="col">
                     <h3>$ {this.calculateAnnualSavings()}</h3>
                     <p>Your Estimated Annual Savings</p>
                 </div>

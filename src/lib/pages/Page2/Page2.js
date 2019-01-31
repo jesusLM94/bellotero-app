@@ -12,7 +12,7 @@ import RangeControlSlider from "./RangeControlSlider";
 class Page2 extends React.Component {
     state = {
         calculator: {},
-        monthlySpending: 10,
+        monthlySpending: 0,
         employees: 1,
     }
 
@@ -30,12 +30,15 @@ class Page2 extends React.Component {
         });
     }
 
-    updateMonthlySpending = monthlySpending => this.setState({monthlySpending})
-    updateEmployees = employees => this.setState({employees})
+    updateMonthlySpending = monthlySpending => this.setState({monthlySpending: parseInt(monthlySpending)})
+    updateEmployees = employees => this.setState({employees: parseInt(employees)})
 
     render() {
         const { calculator, monthlySpending, employees } = this.state
         const { description, title} = calculator
+        const monthlyMinRange = 10
+        const employeesMinRange = 10
+
         return <div className='flex-grid'>
             <div className='col'>
                 <Title title={title} />
@@ -43,12 +46,12 @@ class Page2 extends React.Component {
             </div>
             <div className='col'>
                 <div className='flex-grid'>
-                    <RangeControlSlider name={'Monthly Ingredient Spending'} min={10} max={100} onChange={this.updateMonthlySpending}/>
-                    <InputCalculator value={monthlySpending}/>
+                    <RangeControlSlider value={monthlySpending || monthlyMinRange} name={'Monthly Ingredient Spending'} min={monthlyMinRange} max={100} onChange={this.updateMonthlySpending}/>
+                    <InputCalculator value={monthlySpending || monthlyMinRange}/>
                 </div>
                 <div className='flex-grid'>
-                    <RangeControlSlider name={'Full-time Employees that process invoices'} min={1} max={10} onChange={this.updateEmployees}/>
-                    <InputCalculator value={employees}/>
+                    <RangeControlSlider value={employees || employeesMinRange} name={'Full-time Employees that process invoices'} min={1} max={10} onChange={this.updateEmployees}/>
+                    <InputCalculator value={employees || employeesMinRange}/>
                 </div>
                 <CalculatorResults monthlySpending={monthlySpending} employees={employees}/>
             </div>
