@@ -5,10 +5,14 @@ import _get from "lodash/get"
 import {addCalculator} from "../../store/actions";
 import Title from "../../components/Title";
 import CalculatorDescription from "./CalculatorDescription";
+import InputCalculator from "./inputCalculator";
+import CalculatorResults from "./CalcultatorResults";
 
 class Page2 extends React.Component {
     state = {
         calculator: {},
+        monthlySpending: 10,
+        employees: 1,
     }
 
     componentDidMount() {
@@ -25,9 +29,11 @@ class Page2 extends React.Component {
         });
     }
 
+    updateMonthlySpending = monthlySpending => this.setState({monthlySpending})
+    updateEmployees = employees => this.setState({employees})
+
     render() {
-        console.log(this.state)
-        const { calculator } = this.state
+        const { calculator, monthlySpending, employees } = this.state
         const { description, title} = calculator
         return <div className='flex-grid'>
             <div className='col'>
@@ -35,7 +41,9 @@ class Page2 extends React.Component {
                 <CalculatorDescription description={description} />
             </div>
             <div className='col'>
-
+                <InputCalculator onChange={this.updateMonthlySpending}/>
+                <InputCalculator onChange={this.updateEmployees}/>
+                <CalculatorResults monthlySpending={monthlySpending} employees={employees}/>
             </div>
         </div>
 
