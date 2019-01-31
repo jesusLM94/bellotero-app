@@ -7,6 +7,7 @@ import Title from "../../components/Title";
 import CalculatorDescription from "./CalculatorDescription";
 import InputCalculator from "./inputCalculator";
 import CalculatorResults from "./CalcultatorResults";
+import RangeControlSlider from "./RangeControlSlider";
 
 class Page2 extends React.Component {
     state = {
@@ -41,8 +42,14 @@ class Page2 extends React.Component {
                 <CalculatorDescription description={description} />
             </div>
             <div className='col'>
-                <InputCalculator onChange={this.updateMonthlySpending}/>
-                <InputCalculator onChange={this.updateEmployees}/>
+                <div className='flex-grid'>
+                    <RangeControlSlider name={'Monthly Ingredient Spending'} min={10} max={100} onChange={this.updateMonthlySpending}/>
+                    <InputCalculator value={monthlySpending}/>
+                </div>
+                <div className='flex-grid'>
+                    <RangeControlSlider name={'Full-time Employees that process invoices'} min={1} max={10} onChange={this.updateEmployees}/>
+                    <InputCalculator value={employees}/>
+                </div>
                 <CalculatorResults monthlySpending={monthlySpending} employees={employees}/>
             </div>
         </div>

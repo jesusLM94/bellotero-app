@@ -1,14 +1,14 @@
 import React from "react";
-import { func } from "prop-types"
+import { number } from "prop-types"
 
 class InputCalculator extends React.Component {
     static propTypes = {
-        onChange: func.isRequired
+        value: number.isRequired
     }
 
     render() {
         return (
-            <input onChange={event => this.props.onChange(event.target.value)} />
+            <input value={this.props.value} disabled />
         )
     }
 }

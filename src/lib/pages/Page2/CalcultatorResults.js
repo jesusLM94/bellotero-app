@@ -1,10 +1,10 @@
 import React from "react";
-import { string } from "prop-types"
+import { number } from "prop-types"
 
 class CalculatorResults extends React.Component {
     static propTypes = {
-        monthlySpending: string.isRequired,
-        employees: string.isRequired,
+        monthlySpending: number.isRequired,
+        employees: number.isRequired,
     }
 
     calculateFoodSavings = () => this.props.monthlySpending * 0.3
