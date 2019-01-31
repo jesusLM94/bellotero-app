@@ -11,6 +11,7 @@ import {
 } from './lib/store/actions'
 import Header from "./lib/components/Header";
 import Page1 from "./lib/pages/Page1/Page1";
+import Page2 from "./lib/pages/Page2/Page2";
 
 class App extends React.Component {
     componentDidMount() {
@@ -29,7 +30,7 @@ class App extends React.Component {
                 <Header />
                 <Router>
                     <Switch>
-                        {/*<Route path="/page-1" exact component={} />*/}
+                        <Route path="/page-2" component={Page2} />
                         <Route path="/:page" component={Page1} />
                     </Switch>
                 </Router>
