@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import store from "../../store/store";
 import {addSlider} from "../../store/actions";
-import Title from "./Title";
+import Title from "../../components/Title";
 import Testimonial from "./Testimonial";
 import Navigator from "./Navigator";
 import _get from "lodash/get";
