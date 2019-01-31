@@ -10,7 +10,7 @@ function pages(state = {}, action) {
             const { name, route } = action.payload
             return {
                 ...state,                                             
-                [route]: { name, route }
+                [route]: { ...state[route], name, route }
             }
         }
         case ADD_SLIDER:
