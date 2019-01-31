@@ -1,5 +1,6 @@
 import  { combineReducers } from 'redux'
 import {
+    ADD_CALCULATOR,
     ADD_PAGE,
     ADD_SLIDER,
 } from './actions'
@@ -28,6 +29,19 @@ function pages(state = {}, action) {
                     slider: {
                         title,
                         reviews,
+                    }
+                }
+            }
+        }
+        case ADD_CALCULATOR:
+        {
+            const { route, title, description } = action.payload
+            return {
+                ...state,
+                [route]: {
+                    calculator: {
+                        title,
+                        description,
                     }
                 }
             }
