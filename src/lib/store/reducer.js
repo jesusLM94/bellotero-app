@@ -4,28 +4,34 @@ import {
     ADD_SLIDER,
 } from './actions'
 
-function pages(state = [], action) {
+function pages(state = {}, action) {
     switch (action.type) {
-        case ADD_PAGE:
-            return [
-                ...state,
-                {
-                    name: action.payload.name,
-                    route: action.payload.route,
-                }
-            ]
+        case ADD_PAGE: {
+            const { name, route } = action.payload
+            return {
+                ...state,                                             
+                [route]: { name, route }
+            }
+        }
         case ADD_SLIDER:
-            return state.map((page) => {
-                if (page.route === action.payload.pageId) {
-                    return Object.assign({}, page, {
-                        slider: {
-                            title: action.payload.title,
-                            reviews: action.payload.reviews,
-                        }
-                    })
+        {
+            const { pageId, title, reviews } = action.payload
+            
+            return {
+                // Keep all previous pages
+                ...state,
+                // Access to the page
+                [pageId]: {
+                    // Keep current page state (name/route)
+                    ...state[pageId],
+                    // add slider
+                    slider: {
+                        title,
+                        reviews,
+                    }
                 }
-                return page;
-            });
+            }
+        }
         default:
             return state
     }
