@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios'
-import belloteroLogo from './images/bellotero.svg'
+import {Route, Switch} from "react-router";
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
-import store from './lib/store/store'
 
+import store from './lib/store/store'
 import {
     addPage,
 } from './lib/store/actions'
+import Header from "./lib/components/Header";
 import Page1 from "./lib/pages/Page1/Page1";
 
-class Container extends React.Component {
+class App extends React.Component {
     componentDidMount() {
         axios.get('https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/app.json')
             .then(response => {
@@ -24,35 +26,13 @@ class Container extends React.Component {
     render() {
         return (
             <div className='main-container'>
-                <Header/>
-                <Page1 />
-            </div>
-        );
-    }
-}
-
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            pages: [],
-        };
-        store.subscribe(() => {
-            this.setState({
-                pages: store.getState().pages,
-            });
-        });
-    }
-
-    render() {
-        return (
-            <div className='header-container'>
-                <img src={belloteroLogo} className='bellotero-logo' alt='logo'/>
-                <ul className="menu-items">
-                    {this.state.pages.map((item) =>
-                        <li className='menu-item'><a className='menu-item-link' href={item.route}>{item.name}</a></li>
-                    )}
-                </ul>
+                <Header />
+                <Router>
+                    <Switch>
+                        {/*<Route path="/page-1" exact component={} />*/}
+                        <Route component={Page1} />
+                    </Switch>
+                </Router>
             </div>
         );
     }
@@ -61,6 +41,6 @@ class Header extends React.Component {
 // ========================================
 
 ReactDOM.render(
-    <Container/>,
+    <App/>,
     document.getElementById('root')
 );
