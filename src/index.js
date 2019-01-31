@@ -30,7 +30,7 @@ class App extends React.Component {
                 <Router>
                     <Switch>
                         {/*<Route path="/page-1" exact component={} />*/}
-                        <Route component={Page1} />
+                        <Route path="/:page" component={Page1} />
                     </Switch>
                 </Router>
             </div>
