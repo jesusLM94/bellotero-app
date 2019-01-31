@@ -1,28 +1,16 @@
 import React from "react";
-import _get from "lodash/get"
-import store from "../../store/store";
+import { string } from "prop-types"
 
 class Title extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            slider: {},
-        };
-    }
-
-    componentDidMount() {
-        store.subscribe(() => {
-            this.setState({
-                slider: _get(store.getState(), 'pages[0].slider', {}),
-            });
-        });
+    static propTypes = {
+        title: string.isRequired
     }
 
     render() {
         return (
             <div className='title-container'>
-                {this.state.slider ?
-                    <p className='title'>{this.state.slider.title}</p>
+                {this.props.title ?
+                    <p className='title'>{this.props.title}</p>
                     : null}
             </div>
         )
