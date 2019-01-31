@@ -15,15 +15,15 @@ function pages(state = {}, action) {
         }
         case ADD_SLIDER:
         {
-            const { pageId, title, reviews } = action.payload
+            const { route, title, reviews } = action.payload
             
             return {
                 // Keep all previous pages
                 ...state,
                 // Access to the page
-                [pageId]: {
+                [route]: {
                     // Keep current page state (name/route)
-                    ...state[pageId],
+                    ...state[route],
                     // add slider
                     slider: {
                         title,

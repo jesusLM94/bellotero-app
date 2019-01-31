@@ -17,11 +17,11 @@ export function addPage(name, route) {
     }
 }
 
-export function addSlider(pageId, title, reviews) {
+export function addSlider(route, title, reviews) {
     return {
         type: ADD_SLIDER,
         payload: {
-            pageId,
+            route,
             title,
             reviews,
         },
