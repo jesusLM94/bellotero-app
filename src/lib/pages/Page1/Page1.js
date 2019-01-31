@@ -9,7 +9,8 @@ import _get from "lodash/get";
 
 class Page1 extends React.Component {
     state = {
-        slider: {}
+        slider: {},
+        active: 1
     }
 
     componentDidMount() {
@@ -26,13 +27,16 @@ class Page1 extends React.Component {
         });
     }
 
+    updateActive = active => this.setState({active})
+
     render(){
-        const { title, reviews } = this.state.slider
+        const { active, slider } = this.state
+        const { title, reviews } = slider
 
         return <React.Fragment>
             <Title title={title}/>
-            <Testimonial reviews={reviews} active={1}/>
-            <Navigator />
+            <Testimonial reviews={reviews} active={active}/>
+            <Navigator onChange={this.updateActive}/>
         </React.Fragment>
     }
 }
