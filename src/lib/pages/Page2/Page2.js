@@ -4,6 +4,7 @@ import store from "../../store/store";
 import _get from "lodash/get"
 import {addCalculator} from "../../store/actions";
 import Title from "../../components/Title";
+import CalculatorDescription from "./CalculatorDescription";
 
 class Page2 extends React.Component {
     state = {
@@ -28,9 +29,15 @@ class Page2 extends React.Component {
         console.log(this.state)
         const { calculator } = this.state
         const { description, title} = calculator
-        return <React.Fragment>
-            <Title title={title} />
-        </React.Fragment>
+        return <div className='flex-grid'>
+            <div className='col'>
+                <Title title={title} />
+                <CalculatorDescription description={description} />
+            </div>
+            <div className='col'>
+
+            </div>
+        </div>
 
     }
 }
