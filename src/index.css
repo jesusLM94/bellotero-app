@@ -1,6 +1,7 @@
 .main-container {
     width: 1440px;
     height: 800px;
+    overflow-x: hidden;
     background-color: #f9faff;
 }
 
