@@ -44,14 +44,14 @@ class Page2 extends React.Component {
                 <Title title={title} />
                 <CalculatorDescription description={description} />
             </div>
-            <div className='col'>
-                <div className='flex-grid'>
-                    <RangeControlSlider value={monthlySpending || monthlyMinRange} name={'Monthly Ingredient Spending'} min={monthlyMinRange} max={100} onChange={this.updateMonthlySpending}/>
-                    <InputCalculator value={monthlySpending || monthlyMinRange}/>
+            <div className='col calculator-container'>
+                <div className='flex-grid column-direction'>
+                    <InputCalculator value={monthlySpending || monthlyMinRange} name={'Monthly Ingredient Spending'}/>
+                    <RangeControlSlider value={monthlySpending || monthlyMinRange} min={monthlyMinRange} max={100} onChange={this.updateMonthlySpending}/>
                 </div>
-                <div className='flex-grid'>
-                    <RangeControlSlider value={employees || employeesMinRange} name={'Full-time Employees that process invoices'} min={1} max={10} onChange={this.updateEmployees}/>
-                    <InputCalculator value={employees || employeesMinRange}/>
+                <div className='flex-grid column-direction'>
+                    <InputCalculator value={employees || employeesMinRange} name={'Full-time Employees that process invoices'}/>
+                    <RangeControlSlider value={employees || employeesMinRange} min={1} max={10} onChange={this.updateEmployees}/>
                 </div>
                 <CalculatorResults monthlySpending={monthlySpending} employees={employees}/>
             </div>

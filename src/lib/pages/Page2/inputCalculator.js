@@ -1,14 +1,18 @@
 import React from "react";
-import { number } from "prop-types"
+import { string, number } from "prop-types"
 
 class InputCalculator extends React.Component {
     static propTypes = {
-        value: number.isRequired
+        name: string.isRequired,
+        value: number.isRequired,
     }
 
     render() {
         return (
-            <input value={this.props.value} disabled />
+            <div className="flex-grid space-between">
+                <p className="calculator-input-title">{this.props.name}</p>
+                <input className="calculator-input" value={this.props.value} disabled />
+            </div>
         )
     }
 }

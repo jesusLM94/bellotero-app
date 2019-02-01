@@ -7,19 +7,19 @@ class CalculatorResults extends React.Component {
         employees: number.isRequired,
     }
 
-    calculateFoodSavings = () => this.props.monthlySpending * 0.3
+    calculateFoodSavings = () => Math.round(this.props.monthlySpending * 0.3 * 10) / 10
     calculateAnnualSavings = () => (this.props.employees*1337) + this.calculateFoodSavings()
 
     render() {
         return (
             <div className='flex-grid'>
                 <div className="col">
-                    <h3>$ {this.calculateFoodSavings()}</h3>
-                    <p>Estimated Cost Food Saving</p>
+                    <p className="calculator-results">$ {this.calculateFoodSavings()}</p>
+                    <p className="calculator-results-description">Estimated Cost Food Saving</p>
                 </div>
                 <div className="col">
-                    <h3>$ {this.calculateAnnualSavings()}</h3>
-                    <p>Your Estimated Annual Savings</p>
+                    <p className="calculator-results">$ {this.calculateAnnualSavings()}</p>
+                    <p className="calculator-results-description">Your Estimated Annual Savings</p>
                 </div>
             </div>
         )
