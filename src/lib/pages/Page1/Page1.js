@@ -32,11 +32,12 @@ class Page1 extends React.Component {
     render(){
         const { active, slider } = this.state
         const { title, reviews } = slider
+        const total = reviews ? reviews.length : 0
 
         return <React.Fragment>
             <Title title={title}/>
             <Testimonial reviews={reviews} active={active}/>
-            <Navigator onChange={this.updateActive}/>
+            <Navigator onChange={this.updateActive} active={active} total={total}/>
         </React.Fragment>
     }
 }
