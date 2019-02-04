@@ -8,10 +8,10 @@ import CalculatorDescription from "./CalculatorDescription";
 import InputCalculator from "./inputCalculator";
 import CalculatorResults from "./CalcultatorResults";
 import RangeControlSlider from "./RangeControlSlider";
+import { connect } from 'react-redux';
 
 class Page2 extends React.Component {
     state = {
-        calculator: {},
         monthlySpending: 0,
         employees: 1,
     }
@@ -22,21 +22,14 @@ class Page2 extends React.Component {
                 const data = response.data.calculator;
                 store.dispatch(addCalculator('page-2', data.title, data.description));
             })
-
-        // 1. Replace ´store.subscribe´ by redux connect
-        // 2. Add selectors
-        store.subscribe(() => {
-           this.setState({
-              calculator: _get(store.getState(), `pages[page-2].calculator`, {})
-           });
-        });
     }
 
     updateMonthlySpending = monthlySpending => this.setState({monthlySpending: parseInt(monthlySpending)})
     updateEmployees = employees => this.setState({employees: parseInt(employees)})
 
     render() {
-        const { calculator, monthlySpending, employees } = this.state
+        const { monthlySpending, employees } = this.state
+        const { calculator } = this.props
         const { description, title} = calculator
         const monthlyMinRange = 10
         const employeesMinRange = 10
@@ -62,4 +55,10 @@ class Page2 extends React.Component {
     }
 }
 
-export default Page2
+const mapStateToProps = function (state) {
+    return {
+        calculator: _get(state, `pages[page-2].calculator`, {})
+    }
+}
+
+export default connect(mapStateToProps) (Page2)
