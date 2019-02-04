@@ -12,6 +12,7 @@ import {
 import Header from "./lib/components/Header";
 import Page1 from "./lib/pages/Page1/Page1";
 import Page2 from "./lib/pages/Page2/Page2";
+import { Provider } from 'react-redux';
 
 class App extends React.Component {
     componentDidMount() {
@@ -26,15 +27,17 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className='main-container'>
-                <Header />
-                <Router>
-                    <Switch>
-                        <Route path="/page-2" component={Page2} />
-                        <Route path="/:page" component={Page1} />
-                    </Switch>
-                </Router>
-            </div>
+            <Provider store={store}>
+                <div className='main-container'>
+                    <Header />
+                    <Router>
+                        <Switch>
+                            <Route path="/page-2" component={Page2} />
+                            <Route path="/:page" component={Page1} />
+                        </Switch>
+                    </Router>
+                </div>
+            </Provider>
         );
     }
 }

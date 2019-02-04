@@ -23,6 +23,8 @@ class Page2 extends React.Component {
                 store.dispatch(addCalculator('page-2', data.title, data.description));
             })
 
+        // 1. Replace ´store.subscribe´ by redux connect
+        // 2. Add selectors
         store.subscribe(() => {
            this.setState({
               calculator: _get(store.getState(), `pages[page-2].calculator`, {})
