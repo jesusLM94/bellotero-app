@@ -6,10 +6,10 @@ import Title from "../../components/Title";
 import Testimonial from "./Testimonial";
 import Navigator from "./Navigator";
 import _get from "lodash/get";
+import { connect } from 'react-redux';
 
 class Page1 extends React.Component {
     state = {
-        slider: {},
         active: 1
     }
 
@@ -19,18 +19,13 @@ class Page1 extends React.Component {
                 const data = response.data.slider;
                 store.dispatch(addSlider('page-1', data.title, data.reviews));
             })
-
-        store.subscribe(() => {
-            this.setState({
-                slider: _get(store.getState(),  `pages[${this.props.match.params.page}].slider`, {}),
-            });
-        });
     }
 
     updateActive = active => this.setState({active})
 
     render(){
-        const { active, slider } = this.state
+        const { active } = this.state
+        const { slider } = this.props
         const { title, reviews } = slider
         const total = reviews ? reviews.length : 0
 
@@ -42,4 +37,10 @@ class Page1 extends React.Component {
     }
 }
 
-export default Page1
+const mapStateToProps = function(state, ownProps) {
+    return {
+        slider: _get(state, `pages[${ownProps.match.params.page}].slider`, {})
+    }
+}
+
+export default connect(mapStateToProps) (Page1)
