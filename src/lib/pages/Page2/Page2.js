@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import store from "../../store/store";
-import _get from "lodash/get"
 import {addCalculator} from "../../store/actions";
 import Title from "../../components/Title";
 import CalculatorDescription from "./CalculatorDescription";
@@ -9,6 +8,7 @@ import InputCalculator from "./inputCalculator";
 import CalculatorResults from "./CalcultatorResults";
 import RangeControlSlider from "./RangeControlSlider";
 import { connect } from 'react-redux';
+import { getCalculator } from "../../store/reducer";
 
 class Page2 extends React.Component {
     state = {
@@ -55,10 +55,8 @@ class Page2 extends React.Component {
     }
 }
 
-const mapStateToProps = function (state) {
-    return {
-        calculator: _get(state, `pages[page-2].calculator`, {})
-    }
-}
+const mapStateToProps = state => ({
+    calculator: getCalculator(state)
+})
 
 export default connect(mapStateToProps) (Page2)

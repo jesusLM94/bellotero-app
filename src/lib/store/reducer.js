@@ -4,6 +4,7 @@ import {
     ADD_PAGE,
     ADD_SLIDER,
 } from './actions'
+import _get from "lodash/get";
 
 function pages(state = {}, action) {
     switch (action.type) {
@@ -56,3 +57,7 @@ const belloteroApp = combineReducers({
 })
 
 export default belloteroApp
+
+export const getCalculator = (state) => {
+    return _get(state.pages, `[page-2].calculator`, {})
+}
