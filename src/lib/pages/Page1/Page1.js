@@ -38,7 +38,7 @@ class Page1 extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    slider: getSlider(state, ownProps.match.params.page)
+    slider: getSlider(state, ownProps.match.url.substr(1))
 })
 
 export default connect(mapStateToProps) (Page1)
