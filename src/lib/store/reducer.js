@@ -61,3 +61,7 @@ export default belloteroApp
 export const getCalculator = (state) => {
     return _get(state.pages, `[page-2].calculator`, {})
 }
+
+export const getSlider = (state, params) => {
+    return _get(state, `pages[${params}].slider`, {})
+}

@@ -5,8 +5,8 @@ import {addSlider} from "../../store/actions";
 import Title from "../../components/Title";
 import Testimonial from "./Testimonial";
 import Navigator from "./Navigator";
-import _get from "lodash/get";
 import { connect } from 'react-redux';
+import { getSlider } from "../../store/reducer";
 
 class Page1 extends React.Component {
     state = {
@@ -37,10 +37,8 @@ class Page1 extends React.Component {
     }
 }
 
-const mapStateToProps = function(state, ownProps) {
-    return {
-        slider: _get(state, `pages[${ownProps.match.params.page}].slider`, {})
-    }
-}
+const mapStateToProps = (state, ownProps) => ({
+    slider: getSlider(state, ownProps.match.params.page)
+})
 
 export default connect(mapStateToProps) (Page1)
