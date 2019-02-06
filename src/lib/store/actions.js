@@ -39,3 +39,13 @@ export function fetchMenuItems() {
             })
     }
 }
+
+export function fetchPageContent(url, route) {
+    return function(dispatch) {
+        return axios.get(url).then(response => {
+                const data = response.data;
+                dispatch(addPage(route, data))
+            }
+        )
+    }
+}

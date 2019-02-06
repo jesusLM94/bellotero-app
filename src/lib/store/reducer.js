@@ -41,6 +41,6 @@ const belloteroApp = combineReducers({
 
 export default belloteroApp
 
-export const getContent = (state, params) => {
-    return _get(state.pages, [params, 'content'], {})
+export const getContent = (state, route, params) => {
+    return _get(state.pages, [route, 'content', params], {})
 }

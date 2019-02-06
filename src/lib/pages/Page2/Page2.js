@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import store from "../../store/store";
-import { addPage } from "../../store/actions";
+import { fetchPageContent} from "../../store/actions";
 import Title from "../../components/Title";
 import CalculatorDescription from "./CalculatorDescription";
 import InputCalculator from "./inputCalculator";
@@ -17,11 +16,12 @@ class Page2 extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page2.json')
-            .then(response => {
-                const data = response.data.calculator;
-                store.dispatch(addPage('page-2', data));
-            })
+        store.dispatch(
+            fetchPageContent(
+                'https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page2.json',
+                'page-2'
+            )
+        )
     }
 
     updateMonthlySpending = monthlySpending => this.setState({monthlySpending: parseInt(monthlySpending)})
@@ -56,7 +56,7 @@ class Page2 extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    calculator: getContent(state, 'page-2')
+    calculator: getContent(state, 'page-2', 'calculator')
 })
 
 export default connect(mapStateToProps) (Page2)

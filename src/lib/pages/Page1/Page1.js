@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import store from "../../store/store";
-import {addPage} from "../../store/actions";
+import { fetchPageContent } from "../../store/actions";
 import Title from "../../components/Title";
 import Testimonial from "./Testimonial";
 import Navigator from "./Navigator";
@@ -14,11 +13,12 @@ class Page1 extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page1.json')
-            .then(response => {
-                const data = response.data.slider;
-                store.dispatch(addPage('page-1', data));
-            })
+        store.dispatch(
+            fetchPageContent(
+                'https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page1.json',
+                'page-1'
+            )
+        )
     }
 
     updateActive = active => this.setState({active})
@@ -38,7 +38,7 @@ class Page1 extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    slider: getContent(state, 'page-1')
+    slider: getContent(state, 'page-1', 'slider')
 })
 
 export default connect(mapStateToProps) (Page1)
