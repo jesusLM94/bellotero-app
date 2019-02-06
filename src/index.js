@@ -32,8 +32,18 @@ class App extends React.Component {
                     <Header />
                     <Router>
                         <Switch>
-                            <Route path="/page-2" component={Page2} />
-                            <Route path="/:page" component={Page1} />
+                            <Route path="/:page" render={
+                                ({ match }) => {
+                                    switch (match.params.page) {
+                                        case 'page-1':
+                                            return <Page1 />;
+                                        case 'page-2':
+                                            return <Page2 />;
+                                        default:
+                                            return null;
+                                    }
+                                }
+                            }/>
                         </Switch>
                     </Router>
                 </div>

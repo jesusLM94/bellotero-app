@@ -55,8 +55,8 @@ class Page2 extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    calculator: getCalculator(state, ownProps.match.url.substr(1))
+const mapStateToProps = (state) => ({
+    calculator: getCalculator(state, 'page-2')
 })
 
 export default connect(mapStateToProps) (Page2)

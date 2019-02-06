@@ -59,9 +59,9 @@ const belloteroApp = combineReducers({
 export default belloteroApp
 
 export const getCalculator = (state, params) => {
-    return _get(state.pages, `[${params}].calculator`, {})
+    return _get(state.pages, [params, 'calculator'], {})
 }
 
 export const getSlider = (state, params) => {
-    return _get(state, `pages[${params}].slider`, {})
+    return _get(state.pages, [params, 'slider'], {})
 }
