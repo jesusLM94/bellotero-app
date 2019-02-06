@@ -1,14 +1,14 @@
 import React from "react";
 import axios from "axios";
 import store from "../../store/store";
-import {addCalculator} from "../../store/actions";
+import { addPage } from "../../store/actions";
 import Title from "../../components/Title";
 import CalculatorDescription from "./CalculatorDescription";
 import InputCalculator from "./inputCalculator";
 import CalculatorResults from "./CalcultatorResults";
 import RangeControlSlider from "./RangeControlSlider";
 import { connect } from 'react-redux';
-import { getCalculator } from "../../store/reducer";
+import { getContent} from "../../store/reducer";
 
 class Page2 extends React.Component {
     state = {
@@ -20,7 +20,7 @@ class Page2 extends React.Component {
         axios.get('https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page2.json')
             .then(response => {
                 const data = response.data.calculator;
-                store.dispatch(addCalculator('page-2', data.title, data.description));
+                store.dispatch(addPage('page-2', data));
             })
     }
 
@@ -56,7 +56,7 @@ class Page2 extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    calculator: getCalculator(state, 'page-2')
+    calculator: getContent(state, 'page-2')
 })
 
 export default connect(mapStateToProps) (Page2)

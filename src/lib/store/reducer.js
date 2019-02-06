@@ -1,8 +1,7 @@
 import  { combineReducers } from 'redux'
 import {
-    ADD_CALCULATOR,
     ADD_MENU_ITEM,
-    ADD_SLIDER,
+    ADD_PAGE,
 } from './actions'
 import _get from "lodash/get";
 
@@ -15,9 +14,9 @@ function pages(state = {}, action) {
                 [route]: { ...state[route], name, route }
             }
         }
-        case ADD_SLIDER:
+        case ADD_PAGE:
         {
-            const { route, title, reviews } = action.payload
+            const { route, content } = action.payload
             
             return {
                 // Keep all previous pages
@@ -27,23 +26,7 @@ function pages(state = {}, action) {
                     // Keep current page state (name/route)
                     ...state[route],
                     // add slider
-                    slider: {
-                        title,
-                        reviews,
-                    }
-                }
-            }
-        }
-        case ADD_CALCULATOR:
-        {
-            const { route, title, description } = action.payload
-            return {
-                ...state,
-                [route]: {
-                    calculator: {
-                        title,
-                        description,
-                    }
+                    content,
                 }
             }
         }
@@ -58,10 +41,6 @@ const belloteroApp = combineReducers({
 
 export default belloteroApp
 
-export const getCalculator = (state, params) => {
-    return _get(state.pages, [params, 'calculator'], {})
-}
-
-export const getSlider = (state, params) => {
-    return _get(state.pages, [params, 'slider'], {})
+export const getContent = (state, params) => {
+    return _get(state.pages, [params, 'content'], {})
 }

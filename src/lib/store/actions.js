@@ -3,8 +3,7 @@ import axios from "axios";
  * action types
  */
 export const ADD_MENU_ITEM = 'ADD_MENU_ITEM'
-export const ADD_SLIDER = 'ADD_SLIDER'
-export const ADD_CALCULATOR = 'ADD_CALCULATOR'
+export const ADD_PAGE = 'ADD_PAGE'
 /*
  * action creators
  */
@@ -19,25 +18,13 @@ export function addMenuItem(name, route) {
     }
 }
 
-export function addSlider(route, title, reviews) {
+export function addPage(route, content) {
     return {
-        type: ADD_SLIDER,
+        type: ADD_PAGE,
         payload: {
             route,
-            title,
-            reviews,
+            content,
         },
-    }
-}
-
-export function addCalculator(route, title, description) {
-    return {
-        type: ADD_CALCULATOR,
-        payload: {
-            route,
-            title,
-            description,
-        }
     }
 }
 
