@@ -1,5 +1,4 @@
 import React from "react";
-import store from "../../store/store";
 import { fetchPageContent } from "../../store/actions";
 import Title from "../../components/Title";
 import Testimonial from "./Testimonial";
@@ -13,12 +12,10 @@ class Page1 extends React.Component {
     }
 
     componentDidMount() {
-        store.dispatch(
-            fetchPageContent(
-                'https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page1.json',
-                'page-1'
-            )
-        )
+        this.props.fetchPageContent(
+            'https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page1.json',
+            'page-1'
+        );
     }
 
     updateActive = active => this.setState({active})
@@ -41,4 +38,8 @@ const mapStateToProps = (state) => ({
     slider: getContent(state, 'page-1', 'slider')
 })
 
-export default connect(mapStateToProps) (Page1)
+const mapDispatchToProps = {
+    fetchPageContent: fetchPageContent
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Page1)

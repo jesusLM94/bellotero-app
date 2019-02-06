@@ -1,5 +1,4 @@
 import React from "react";
-import store from "../../store/store";
 import { fetchPageContent} from "../../store/actions";
 import Title from "../../components/Title";
 import CalculatorDescription from "./CalculatorDescription";
@@ -16,12 +15,10 @@ class Page2 extends React.Component {
     }
 
     componentDidMount() {
-        store.dispatch(
-            fetchPageContent(
-                'https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page2.json',
-                'page-2'
-            )
-        )
+        this.props.fetchPageContent(
+            'https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/page2.json',
+            'page-2'
+        );
     }
 
     updateMonthlySpending = monthlySpending => this.setState({monthlySpending: parseInt(monthlySpending)})
@@ -59,4 +56,8 @@ const mapStateToProps = (state) => ({
     calculator: getContent(state, 'page-2', 'calculator')
 })
 
-export default connect(mapStateToProps) (Page2)
+const mapDispatchToProps = {
+    fetchPageContent: fetchPageContent
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Page2)
