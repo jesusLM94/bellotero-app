@@ -1,14 +1,14 @@
 import  { combineReducers } from 'redux'
 import {
     ADD_CALCULATOR,
-    ADD_PAGE,
+    ADD_MENU_ITEM,
     ADD_SLIDER,
 } from './actions'
 import _get from "lodash/get";
 
 function pages(state = {}, action) {
     switch (action.type) {
-        case ADD_PAGE: {
+        case ADD_MENU_ITEM: {
             const { name, route } = action.payload
             return {
                 ...state,                                             

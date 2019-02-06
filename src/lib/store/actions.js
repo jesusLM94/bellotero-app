@@ -2,16 +2,16 @@ import axios from "axios";
 /*
  * action types
  */
-export const ADD_PAGE = 'ADD_PAGE'
+export const ADD_MENU_ITEM = 'ADD_MENU_ITEM'
 export const ADD_SLIDER = 'ADD_SLIDER'
 export const ADD_CALCULATOR = 'ADD_CALCULATOR'
 /*
  * action creators
  */
 
-export function addPage(name, route) {
+export function addMenuItem(name, route) {
     return {
-        type: ADD_PAGE,
+        type: ADD_MENU_ITEM,
         payload: {
             name,
             route,
@@ -47,7 +47,7 @@ export function fetchMenuItems() {
             .then(response => {
                 const pages = (response.data.menu.items);
                 pages.forEach(page => {
-                    dispatch(addPage(page.text, page.route));
+                    dispatch(addMenuItem(page.text, page.route));
                 })
             })
     }
