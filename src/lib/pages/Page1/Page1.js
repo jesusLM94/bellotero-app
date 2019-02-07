@@ -35,8 +35,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    fetchPageContent: fetchPageContent,
-    toggleActive: toggleActive,
+    fetchPageContent,
+    toggleActive,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (Page1)

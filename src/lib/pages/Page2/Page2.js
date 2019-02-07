@@ -53,9 +53,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    fetchPageContent: fetchPageContent,
-    changeMonthlySpending: changeMonthlySpending,
-    changeEmployeesNumber: changeEmployeesNumber,
+    fetchPageContent,
+    changeMonthlySpending,
+    changeEmployeesNumber,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps) (Page2)
