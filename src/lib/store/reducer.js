@@ -35,9 +35,12 @@ function pages(state = {}, action) {
         {
             return {
                 ...state,
-                ['page-1']: {
+                'page-1': {
                     ...state['page-1'],
-                    active: action.active,
+                    'content': {
+                        ...state['page-1']['content'],
+                        active: action.active,
+                    }
                 }
             }
         }
@@ -57,5 +60,5 @@ export const getContent = (state, route, params) => {
 }
 
 export const getActive = (state) => {
-    return _get(state.pages, '[page-1].active', 1)
+    return _get(state.pages, '[page-1].content.active', 1)
 }
