@@ -4,6 +4,7 @@ import axios from "axios";
  */
 export const ADD_MENU_ITEM = 'ADD_MENU_ITEM'
 export const ADD_PAGE = 'ADD_PAGE'
+export const TOGGLE_ACTIVE = 'TOGGLE_ACTIVE'
 /*
  * action creators
  */
@@ -28,6 +29,13 @@ export function addPage(route, content) {
     }
 }
 
+export function toggleActive(active) {
+    return {
+        type: TOGGLE_ACTIVE,
+        active: active,
+    }
+}
+
 export function fetchMenuItems() {
     return function(dispatch) {
         return axios.get('https://raw.githubusercontent.com/Bernabe-Felix/Bellotero/master/app.json')
@@ -43,8 +51,7 @@ export function fetchMenuItems() {
 export function fetchPageContent(url, route) {
     return function(dispatch) {
         return axios.get(url).then(response => {
-                const data = response.data;
-                dispatch(addPage(route, data))
+                dispatch(addPage(route, response.data))
             }
         )
     }

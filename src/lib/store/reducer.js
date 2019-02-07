@@ -2,6 +2,7 @@ import  { combineReducers } from 'redux'
 import {
     ADD_MENU_ITEM,
     ADD_PAGE,
+    TOGGLE_ACTIVE,
 } from './actions'
 import _get from "lodash/get";
 
@@ -30,6 +31,16 @@ function pages(state = {}, action) {
                 }
             }
         }
+        case TOGGLE_ACTIVE:
+        {
+            return {
+                ...state,
+                ['page-1']: {
+                    ...state['page-1'],
+                    active: action.active,
+                }
+            }
+        }
         default:
             return state
     }
@@ -43,4 +54,8 @@ export default belloteroApp
 
 export const getContent = (state, route, params) => {
     return _get(state.pages, [route, 'content', params], {})
+}
+
+export const getActive = (state) => {
+    return _get(state.pages, '[page-1].active', 1)
 }
