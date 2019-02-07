@@ -3,6 +3,8 @@ import {
     ADD_MENU_ITEM,
     ADD_PAGE,
     TOGGLE_ACTIVE,
+    CHANGE_MONTHLY_SPENDING,
+    CHANGE_EMPLOYEES_NUMBER,
 } from './actions'
 import _get from "lodash/get";
 
@@ -44,6 +46,33 @@ function pages(state = {}, action) {
                 }
             }
         }
+        case CHANGE_MONTHLY_SPENDING:
+        {
+            return {
+                ...state,
+                'page-2': {
+                    ...state['page-2'],
+                    'content': {
+                        ...state['page-2']['content'],
+                        monthlySpending: action.monthlySpending,
+                    }
+                }
+            }
+        }
+        case CHANGE_EMPLOYEES_NUMBER:
+        {
+            return {
+                ...state,
+                'page-2': {
+                    ...state['page-2'],
+                    'content': {
+                        ...state['page-2']['content'],
+                        employees: action.employees,
+                    }
+                }
+
+            }
+        }
         default:
             return state
     }
@@ -61,4 +90,12 @@ export const getContent = (state, route, params) => {
 
 export const getActive = (state) => {
     return _get(state.pages, '[page-1].content.active', 1)
+}
+
+export const getMonthlySpending = (state) => {
+    return _get(state.pages, '[page-2].content.monthlySpending', 0)
+}
+
+export const getEmployeesNumber = (state) => {
+    return _get(state.pages, '[page-2].content.employees', 1)
 }
