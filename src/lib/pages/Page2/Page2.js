@@ -20,8 +20,8 @@ class Page2 extends React.Component {
     render() {
         const { calculator, monthlySpending, employees } = this.props
         const { description, title} = calculator
-        const updateMonthlySpending = monthlySpending => this.props.changeMonthlySpending(parseInt(monthlySpending));
-        const updateEmployees = employees => this.props.changeEmployeesNumber(parseInt(employees));
+        const updateMonthlySpending = monthlySpending => this.props.changeMonthlySpending(parseInt(monthlySpending))
+        const updateEmployees = employees => this.props.changeEmployeesNumber(parseInt(employees))
         const monthlyMinRange = 10
         const employeesMinRange = 10
 

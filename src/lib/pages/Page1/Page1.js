@@ -19,7 +19,7 @@ class Page1 extends React.Component {
         const { slider, active } = this.props
         const { title, reviews } = slider
         const total = reviews ? reviews.length : 0
-        const toggleActive = active => this.props.toggleActive(active);
+        const toggleActive = active => this.props.toggleActive(active)
 
         return <React.Fragment>
             <Title title={title}/>
